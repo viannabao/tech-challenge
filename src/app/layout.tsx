@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { ChakraProvider } from "@chakra-ui/react";
+import AppBar from "@/components/AppBar";
+import { UserProvider } from "@/context/UserContext";
 
 export const metadata: Metadata = {
   title: "Tech Challenge",
@@ -14,7 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ChakraProvider>{children}</ChakraProvider>
+        <ChakraProvider>
+          <UserProvider>
+            <AppBar />
+          </UserProvider>
+          <main id="main-content">{children}</main>
+        </ChakraProvider>
       </body>
     </html>
   );
