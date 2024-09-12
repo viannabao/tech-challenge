@@ -1,5 +1,8 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Demo
+https://tech-challenge-4cfm.vercel.app/
+
 ## Getting Started
 
 First, run the development server:
@@ -18,15 +21,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Features
 
-To learn more about Next.js, take a look at the following resources:
+1. **Username and Job Title Requirement**: To view the content, you must enter your username and job title. The app will prompt for this information if it’s missing.
+2. **Local Storage for User Data**: The entered username and job title are stored in your browser’s local storage, allowing them to persist between sessions.
+3. **View the Pokédex with Pagination**: The application includes a Pokédex feature where users can view Pokémon data with pagination, making it easier to browse through a large list of Pokémon.
+4. **Pokédex API**: The app uses the GraphQL PokéAPI from https://graphql-pokeapi.vercel.app/ to fetch Pokémon data, ensuring up-to-date information.
+5. **Accessibility and Responsiveness**: The web application is designed to be accessible and user-friendly, featuring responsive design that adapts to different screen sizes and is optimized for users with varying accessibility needs.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Future Work
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Unit Tests**: Implementing unit tests to ensure the application functions as expected and is maintainable.
+2. **Search Pokémon Feature**: Adding a search feature to allow users to easily find a specific Pokémon by name or type within the Pokédex.
