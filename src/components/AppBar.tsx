@@ -1,10 +1,11 @@
 "use client";
 
-import { Box, Flex, Text, Button, Icon } from "@chakra-ui/react";
+import { Flex, Text, Icon, HStack } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import UserInfoModal from "./UserInfoModal";
 import { EditIcon } from "@chakra-ui/icons";
+import Link from "next/link";
 
 const AppBar = () => {
   const { user } = useContext(UserContext);
@@ -19,7 +20,7 @@ const AppBar = () => {
     }
   }, [user]);
 
-  // Manually open the modal when clicking on the username/job title
+  // Open the modal when clicking on the username/job title
   const handleTextClick = () => {
     setModalOpen(true);
   };
@@ -28,34 +29,49 @@ const AppBar = () => {
     <>
       <Flex
         as="nav"
-        bg="teal.500"
+        bg="black"
         color="white"
         py={4}
         px={8}
-        justify="space-between"
+        justify="center"
         align="center"
+        position="relative"
         aria-label="Main Navigation"
       >
-        <Text fontSize="xl" fontWeight="bold" role="heading" aria-level={1}>
-          My Application
-        </Text>
+        <Link href="/" passHref>
+          <Text
+            fontSize="xl"
+            fontWeight="bold"
+            role="heading"
+            aria-level={1}
+            textAlign="center"
+            flex={1}
+            cursor="pointer"
+          >
+            Pokédex
+          </Text>
+        </Link>
 
         {user.username && user.jobTitle && (
-          <Box
-            textAlign="right"
+          <HStack
+            position="absolute"
+            right={8}
             onClick={handleTextClick}
             cursor="pointer"
-            display="flex"
-            alignItems="center"
+            spacing={2}
+            tabIndex={0}
+            aria-label={`Edit user information for ${user.username}`}
+            role="button"
+            _focus={{ boxShadow: "outline" }}
           >
-            <Text fontSize="md" aria-live="polite">
+            <Text fontSize="md">
               {user.username} | {user.jobTitle}
             </Text>
-            {/* Add Edit Icon */}
-            <Icon as={EditIcon} boxSize={5} ml={2} />
-          </Box>
+            <Icon as={EditIcon} boxSize={5} />
+          </HStack>
         )}
       </Flex>
+
       <UserInfoModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
