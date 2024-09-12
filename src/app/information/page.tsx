@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import {
   Box,
   Button,
@@ -21,7 +21,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import PokeCard from "@/components/PokeCard";
 import PokeDetails from "@/components/PokeDetails";
 
-const InformationPage = () => {
+const InformationPageContent = () => {
   const [pokemons, setPokemons] = useState<BasicPokemon[]>([]);
   const [selectedPokemon, setSelectedPokemon] = useState<PokemonDetail | null>(
     null
@@ -33,7 +33,7 @@ const InformationPage = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // Determine the limit based on screen size (5 per page for mobile, 20 for desktop)
+  // Determine the limit based on screen size (5 per page for mobile, 16 for desktop)
   const limit =
     typeof window !== "undefined" && window.innerWidth <= 768 ? 5 : 16;
 
@@ -180,6 +180,14 @@ const InformationPage = () => {
         />
       )}
     </Box>
+  );
+};
+
+const InformationPage = () => {
+  return (
+    <Suspense fallback={<CircularProgress isIndeterminate color="black" />}>
+      <InformationPageContent />
+    </Suspense>
   );
 };
 
